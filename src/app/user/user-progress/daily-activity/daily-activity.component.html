@@ -1,0 +1,31 @@
+<div id="container" *ngIf="status.length==exercises.length">
+  <div id="left">
+<ul >
+  <li *ngFor="let x of exercises;let y=index" (click)="currentSelection(y)">
+    {{x.name}}
+    <img src="http://localhost:5000/files/images/{{status[y].status+'.png'}}">
+  </li>
+</ul>
+<br><br>
+  <div class="form-item">
+       <label for="weight">Weight(lbs)</label>
+       <input type="text" [(ngModel)]="weight">
+  </div>
+  <div class="form-item">
+    <label for="weight">Calories Burnt</label>
+    <label for="weight">0</label>
+  </div>
+  <button>Update todays status</button>
+</div>
+
+<div id="right">
+   
+    <div id="timer-box">
+      <div id="current-activity"> Current Activity :  {{currentActivity}}</div>
+            <div class="timer">  {{mins}}  Mins {{secs}}  Secs</div>
+            <button [disabled]="watchtoggle" (click)="stop()">Stop</button>
+            <button [disabled]="!watchtoggle" (click)="timer()">Start</button>
+            <button (click)="finish()">Finish</button>
+    </div>
+</div>
+</div>
